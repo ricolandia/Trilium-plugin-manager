@@ -4,7 +4,7 @@
     "author": "ricolandia",
     "description": "Personal plugin registry for TriliumNext Plugin Manager.",
     "homepage": "https://github.com/ricolandia/trilium-plugin-manager",
-    "updated": "2026-09-23"
+    "updated": "2026-09-27"
   },
   "plugins": [
     {
@@ -73,7 +73,7 @@
       "id": "ai-chat-openrouter",
       "name": "AI Chat (OpenRouter)",
       "description": "Inline AI chat widget for any OpenAI-compatible provider (api_base), OpenRouter included. Conversation history, configurable system prompt and context from the current note.",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/AI-Chat",
       "tags": ["ai", "chat", "openrouter", "productivity"],
@@ -104,8 +104,8 @@
     {
       "id": "shared-notes",
       "name": "Shared Notes",
-      "description": "Share notes between TriliumNext instances via invite strings: multi-reply threads, versioned snapshots, bidirectional sharing and reply notifications.",
-      "version": "0.8.0",
+      "description": "Share notes between TriliumNext instances via invite strings: multi-reply threads, versioned snapshots, bidirectional replies with a return channel, endpoint validation and a bilingual UI (PT/EN) that follows the interface language.",
+      "version": "0.10.0",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Shared-Notes",
       "tags": ["share", "comment"],

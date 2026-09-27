@@ -687,8 +687,9 @@ async function installPlugin(p, btn) {
           const baseUrl = manifestUrl.substring(0, manifestUrl.lastIndexOf('/') + 1);
           const noteMap = {};
 
-          // 2. Cria cada nota do manifest
-          for (const def of manifest.notes) {
+          // 2. Cria cada nota do manifest — suporta hierarquia via 'children'
+          //    (nota mãe render com filhas: código, config, etc.)
+          async function createNoteDef(parentId, def) {
             let content = def.content || '';
             if (def.sourceUrl) {
               const srcUrl = def.sourceUrl.match(/^https?:\/\//) ? def.sourceUrl : baseUrl + def.sourceUrl;
@@ -696,13 +697,23 @@ async function installPlugin(p, btn) {
               content = srcBuf.toString('utf-8');
             }
             const created = await api.createNewNote({
-              parentNoteId,
+              parentNoteId: parentId,
               title: def.title,
               content,
               type: def.type || 'text',
               mime: def.mime || undefined
             });
-            noteMap[def.title] = created.note.noteId;
+            const nid = created.note.noteId;
+            noteMap[def.title] = nid;
+            if (Array.isArray(def.children)) {
+              for (const childDef of def.children) {
+                await createNoteDef(nid, childDef);
+              }
+            }
+            return nid;
+          }
+          for (const def of manifest.notes) {
+            await createNoteDef(parentNoteId, def);
           }
 
           // 3. Aplica labels do manifest

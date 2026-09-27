@@ -647,22 +647,20 @@ async function installPlugin(p, btn) {
       const result = await api.runAsyncOnBackendWithManualTransactionHandling(
         async (manifestUrl, parentNoteId, pluginId, pluginVersion, pluginName) => {
           function httpGet(url, depth) {
+            // fetch é o caminho permitido no sandbox de scripts (0.105+ bloqueia require('https'))
             if ((depth || 0) > 5) return Promise.reject(new Error('Muitos redirects'));
-            return new Promise((resolve, reject) => {
-              const mod = url.startsWith('https') ? require('https') : require('http');
-              mod.get(url, (res) => {
-                if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-                  res.resume();
-                  return httpGet(res.headers.location, (depth || 0) + 1).then(resolve, reject);
-                }
-                if (res.statusCode >= 400) { res.resume(); return reject(new Error(`HTTP ${res.statusCode}`)); }
-                const chunks = [];
-                res.on('data', c => chunks.push(c));
-                res.on('end', () => resolve(Buffer.concat(chunks)));
-                res.on('error', reject);
-              }).on('error', reject)
-                .setTimeout(30000, function() { this.destroy(); reject(new Error('Timeout (30s)')); });
-            });
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), 30000);
+            return fetch(url, { redirect: 'follow', signal: controller.signal })
+              .then((res) => {
+                if (res.status >= 400) throw new Error(`HTTP ${res.status}`);
+                return res.text();
+              })
+              .catch((e) => {
+                if (e && e.name === 'AbortError') throw new Error('Timeout (30s)');
+                throw e;
+              })
+              .finally(() => clearTimeout(timer));
           }
 
           // 1. Baixa o manifest
@@ -743,22 +741,20 @@ async function installPlugin(p, btn) {
       const result = await api.runAsyncOnBackendWithManualTransactionHandling(
         async (sourceUrl, parentNoteId, pluginId, pluginVersion, pluginName) => {
           function httpGet(url, depth) {
+            // fetch é o caminho permitido no sandbox de scripts (0.105+ bloqueia require('https'))
             if ((depth || 0) > 5) return Promise.reject(new Error('Muitos redirects'));
-            return new Promise((resolve, reject) => {
-              const mod = url.startsWith('https') ? require('https') : require('http');
-              mod.get(url, (res) => {
-                if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-                  res.resume();
-                  return httpGet(res.headers.location, (depth || 0) + 1).then(resolve, reject);
-                }
-                if (res.statusCode >= 400) { res.resume(); return reject(new Error(`HTTP ${res.statusCode}`)); }
-                const chunks = [];
-                res.on('data', c => chunks.push(c));
-                res.on('end', () => resolve(Buffer.concat(chunks)));
-                res.on('error', reject);
-              }).on('error', reject)
-                .setTimeout(30000, function() { this.destroy(); reject(new Error('Timeout (30s)')); });
-            });
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), 30000);
+            return fetch(url, { redirect: 'follow', signal: controller.signal })
+              .then((res) => {
+                if (res.status >= 400) throw new Error(`HTTP ${res.status}`);
+                return res.text();
+              })
+              .catch((e) => {
+                if (e && e.name === 'AbortError') throw new Error('Timeout (30s)');
+                throw e;
+              })
+              .finally(() => clearTimeout(timer));
           }
           const buf = await httpGet(sourceUrl);
           if (!buf.length) throw new Error('Source vazio: ' + sourceUrl);

@@ -13,7 +13,7 @@ const $root = $container;
 $root.html(`
 <style>
   /* ── Variáveis: herda o tema do Trilium, com fallbacks ── */
-  :root {
+#pm-root {
     --bg:       var(--main-background-color,   #16161e);
     --surface:  var(--accented-background-color, #1f1f2e);
     --border:   var(--main-border-color,         #2e2e42);
@@ -27,9 +27,9 @@ $root.html(`
     --mono:     'JetBrains Mono', 'Fira Mono', monospace;
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+#pm-root *, #pm-root *::before, #pm-root *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .pm-container {
+#pm-root {
     font-family: var(--font-family, 'Segoe UI', system-ui, sans-serif);
     background: transparent;
     color: var(--text);
@@ -38,7 +38,7 @@ $root.html(`
   }
 
   /* ── Header ── */
-  .header {
+#pm-root .header {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -46,7 +46,7 @@ $root.html(`
     padding-bottom: 14px;
     border-bottom: 1px solid var(--border);
   }
-  .header-left h1 {
+#pm-root .header-left h1 {
     font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: -0.3px;
@@ -54,12 +54,12 @@ $root.html(`
     align-items: center;
     gap: 8px;
   }
-  .header-left p {
+#pm-root .header-left p {
     color: var(--muted);
     font-size: 0.8rem;
     margin-top: 3px;
   }
-  .btn-refresh {
+#pm-root .btn-refresh {
     padding: 5px 12px;
     background: transparent;
     border: 1px solid var(--border);
@@ -69,10 +69,10 @@ $root.html(`
     cursor: pointer;
     transition: color 0.15s, border-color 0.15s;
   }
-  .btn-refresh:hover { color: var(--text); border-color: var(--accent); }
+#pm-root .btn-refresh:hover { color: var(--text); border-color: var(--accent); }
 
   /* ── Config banner ── */
-  .banner {
+#pm-root .banner {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -85,10 +85,10 @@ $root.html(`
     color: var(--muted);
     transition: all 0.2s;
   }
-  .banner.ok     { border-color: var(--green); color: var(--green); }
-  .banner.warn   { border-color: var(--yellow); color: var(--yellow); }
-  .banner.error  { border-color: var(--red);   color: var(--red); }
-  .banner .dot {
+#pm-root .banner.ok { border-color: var(--green); color: var(--green); }
+#pm-root .banner.warn { border-color: var(--yellow); color: var(--yellow); }
+#pm-root .banner.error { border-color: var(--red);   color: var(--red); }
+#pm-root .banner .dot {
     width: 7px; height: 7px;
     border-radius: 50%;
     background: currentColor;
@@ -96,13 +96,13 @@ $root.html(`
   }
 
   /* ── Grid de cards ── */
-  .cat-bar {
+#pm-root .cat-bar {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
     margin-bottom: 16px;
   }
-  .cat-pill {
+#pm-root .cat-pill {
     padding: 4px 12px;
     border-radius: 99px;
     border: 1px solid var(--border);
@@ -112,16 +112,16 @@ $root.html(`
     cursor: pointer;
     transition: border-color 0.15s, color 0.15s, background 0.15s;
   }
-  .cat-pill:hover { border-color: var(--accent); color: var(--text); }
-  .cat-pill.active { border-color: var(--accent); background: var(--accent); color: #16161e; font-weight: 600; }
+#pm-root .cat-pill:hover { border-color: var(--accent); color: var(--text); }
+#pm-root .cat-pill.active { border-color: var(--accent); background: var(--accent); color: #16161e; font-weight: 600; }
 
-  .grid {
+#pm-root .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     gap: 14px;
   }
 
-  .card {
+#pm-root .card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--r);
@@ -131,20 +131,20 @@ $root.html(`
     gap: 10px;
     transition: border-color 0.15s, transform 0.1s;
   }
-  .card:hover { border-color: var(--accent); transform: translateY(-1px); }
-  .card.is-installed { border-color: var(--green); }
+#pm-root .card:hover { border-color: var(--accent); transform: translateY(-1px); }
+#pm-root .card.is-installed { border-color: var(--green); }
 
-  .card-top {
+#pm-root .card-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 8px;
   }
-  .card-name {
+#pm-root .card-name {
     font-weight: 600;
     font-size: 0.95rem;
   }
-  .card-version {
+#pm-root .card-version {
     font-family: var(--mono);
     font-size: 0.72rem;
     color: var(--muted);
@@ -154,22 +154,22 @@ $root.html(`
     white-space: nowrap;
     border: 1px solid var(--border);
   }
-  .card-author {
+#pm-root .card-author {
     font-size: 0.78rem;
     color: var(--muted);
   }
-  .card-desc {
+#pm-root .card-desc {
     font-size: 0.85rem;
     line-height: 1.55;
     color: var(--text);
     flex-grow: 1;
   }
-  .card-tags {
+#pm-root .card-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
   }
-  .tag {
+#pm-root .tag {
     font-size: 0.7rem;
     padding: 2px 8px;
     border-radius: 99px;
@@ -177,7 +177,7 @@ $root.html(`
     border: 1px solid var(--border);
     color: var(--muted);
   }
-  .card-footer {
+#pm-root .card-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -186,7 +186,7 @@ $root.html(`
     border-top: 1px solid var(--border);
     margin-top: auto;
   }
-  .badge-ok {
+#pm-root .badge-ok {
     font-size: 0.75rem;
     color: var(--green);
     display: flex;
@@ -195,7 +195,7 @@ $root.html(`
   }
 
   /* ── Botões ── */
-  .btn {
+#pm-root .btn {
     padding: 6px 14px;
     border-radius: 6px;
     border: none;
@@ -204,27 +204,27 @@ $root.html(`
     cursor: pointer;
     transition: opacity 0.15s, transform 0.1s;
   }
-  .btn:hover:not(:disabled) { opacity: 0.85; transform: scale(0.98); }
-  .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+#pm-root .btn:hover:not(:disabled) { opacity: 0.85; transform: scale(0.98); }
+#pm-root .btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
-  .btn-install {
+#pm-root .btn-install {
     background: var(--accent);
     color: #16161e;
   }
-  .btn-reinstall {
+#pm-root .btn-reinstall {
     background: transparent;
     border: 1px solid var(--border);
     color: var(--muted);
     font-size: 0.75rem;
   }
-  .btn-reinstall:hover { border-color: var(--accent); color: var(--accent); }
-  .btn-download {
+#pm-root .btn-reinstall:hover { border-color: var(--accent); color: var(--accent); }
+#pm-root .btn-download {
     background: var(--surface);
     border: 1px solid var(--border);
     color: var(--muted);
   }
-  .btn-download:hover { border-color: var(--accent); color: var(--accent); }
-  .btn-howto {
+#pm-root .btn-download:hover { border-color: var(--accent); color: var(--accent); }
+#pm-root .btn-howto {
     background: transparent;
     border: 1px solid var(--border);
     color: var(--muted);
@@ -232,17 +232,17 @@ $root.html(`
     padding: 4px 8px;
     float: left;
   }
-  .btn-howto:hover { border-color: var(--accent); color: var(--accent); }
+#pm-root .btn-howto:hover { border-color: var(--accent); color: var(--accent); }
 
   /* ── Estados ── */
-  .state-center {
+#pm-root .state-center {
     text-align: center;
     padding: 60px 20px;
     color: var(--muted);
   }
-  .state-center .icon { font-size: 2rem; margin-bottom: 12px; }
-  .state-center p { font-size: 0.85rem; line-height: 1.6; }
-  .state-center code {
+#pm-root .state-center .icon { font-size: 2rem; margin-bottom: 12px; }
+#pm-root .state-center p { font-size: 0.85rem; line-height: 1.6; }
+#pm-root .state-center code {
     font-family: var(--mono);
     background: var(--surface);
     padding: 1px 6px;
@@ -252,7 +252,7 @@ $root.html(`
   }
 
   /* ── Toast ── */
-  .toast {
+#pm-root .toast {
     position: fixed;
     bottom: 18px; right: 18px;
     background: var(--surface);
@@ -264,15 +264,15 @@ $root.html(`
     max-width: 280px;
     animation: toastIn 0.2s cubic-bezier(.22,1,.36,1);
   }
-  .toast.ok    { border-color: var(--green); color: var(--green); }
-  .toast.error { border-color: var(--red);   color: var(--red); }
+#pm-root .toast.ok { border-color: var(--green); color: var(--green); }
+#pm-root .toast.error { border-color: var(--red);   color: var(--red); }
   @keyframes toastIn {
-    from { transform: translateY(14px); opacity: 0; }
-    to   { transform: translateY(0);    opacity: 1; }
+#pm-root from { transform: translateY(14px); opacity: 0; }
+#pm-root to { transform: translateY(0);    opacity: 1; }
   }
 
   /* ── Source pill (remote/local) ── */
-  .source-bar {
+#pm-root .source-bar {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -280,7 +280,7 @@ $root.html(`
     font-size: 0.78rem;
     color: var(--muted);
   }
-  .source-pill {
+#pm-root .source-pill {
     display: inline-flex;
     align-items: center;
     gap: 5px;
@@ -292,36 +292,36 @@ $root.html(`
     font-size: 0.72rem;
     color: var(--muted);
   }
-  .source-pill.remote { border-color: var(--accent); color: var(--accent); }
-  .source-pill.local  { border-color: var(--yellow); color: var(--yellow); }
-  .source-pill.error  { border-color: var(--red);    color: var(--red); }
-  .source-pill .icon-s { font-style: normal; }
+#pm-root .source-pill.remote { border-color: var(--accent); color: var(--accent); }
+#pm-root .source-pill.local { border-color: var(--yellow); color: var(--yellow); }
+#pm-root .source-pill.error { border-color: var(--red);    color: var(--red); }
+#pm-root .source-pill .icon-s { font-style: normal; }
 
-  .badge-update {
+#pm-root .badge-update {
     font-size: 0.75rem;
     color: var(--yellow);
     display: flex;
     align-items: center;
     gap: 5px;
   }
-  .btn-update {
+#pm-root .btn-update {
     background: var(--yellow);
     color: #16161e;
     font-size: 0.82rem;
   }
-  .card.has-update { border-color: var(--yellow); }
+#pm-root .card.has-update { border-color: var(--yellow); }
 
-  .btn-uninstall {
+#pm-root .btn-uninstall {
     background: transparent;
     border: 1px solid var(--border);
     color: var(--red);
     font-size: 0.75rem;
     padding: 6px 10px;
   }
-  .btn-uninstall:hover { border-color: var(--red); background: color-mix(in srgb, var(--red) 10%, transparent); }
+#pm-root .btn-uninstall:hover { border-color: var(--red); background: color-mix(in srgb, var(--red) 10%, transparent); }
 
   /* ── Spinner inline ── */
-  .spinner {
+#pm-root .spinner {
     display: inline-block;
     width: 10px; height: 10px;
     border: 2px solid currentColor;
@@ -334,7 +334,7 @@ $root.html(`
   @keyframes spin { to { transform: rotate(360deg); } }
 </style>
 
-<div class="pm-container">
+<div id="pm-root" class="pm-container">
 
 <div class="header">
   <div class="header-left">

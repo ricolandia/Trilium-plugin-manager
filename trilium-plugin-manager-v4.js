@@ -10,8 +10,9 @@
 
 const $root = $container;
 
-$root.html(`
-<style>
+// CSS próprio do manager, injetado no <head> — imune a sanitização de render
+// notes e a temas sem regras de card (ex.: instâncias sem o tema Folio).
+const PM_CSS = `
   /* ── Variáveis: herda o tema do Trilium, com fallbacks ── */
 #pm-root {
     --bg:       var(--main-background-color,   #16161e);
@@ -332,7 +333,19 @@ $root.html(`
     margin-right: 4px;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
-</style>
+`;
+
+try {
+  if (typeof document !== 'undefined') {
+    const pmStyle = document.createElement('style');
+    pmStyle.id = 'pm-manager-css';
+    pmStyle.textContent = PM_CSS;
+    document.head.appendChild(pmStyle);
+  }
+} catch (e) { console.warn('[PluginManager] css inject failed:', e); }
+
+$root.html(`
+
 
 <div id="pm-root" class="pm-container">
 

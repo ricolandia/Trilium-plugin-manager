@@ -88,6 +88,7 @@ Create a public [GitHub Gist](https://gist.github.com) with a `registry.json` fi
       "description": "Weekly planning board with columns.",
       "tags": ["productivity", "planning"],
       "sourceUrl": "https://raw.githubusercontent.com/user/repo/main/planner.jsx",
+      "labels": [ { "name": "widget" }, { "name": "readOnly" } ],
       "zipUrl": "https://github.com/user/repo/raw/main/planner.zip"
     }
   ]
@@ -104,6 +105,7 @@ Create a public [GitHub Gist](https://gist.github.com) with a `registry.json` fi
 | `tags` | | Array of tag strings |
 | `homepage` | | URL to the plugin's docs or repository — shows a "How to" button on the card |
 | `sourceUrl` | | Raw URL to the `.js`/`.jsx` source file |
+| `labels` | | Array of `{ "name", "value" }` applied to the created note in the single-file flow — e.g. `widget`, `readOnly` |
 | `manifestUrl` | | Raw URL to a `manifest.json` for multi-note plugins (see below) |
 | `zipUrl` | | Legacy URL to a Trilium export ZIP |
 
@@ -131,28 +133,36 @@ For plugins that need multiple notes (widget + handler + config + render note). 
     {
       "title": "My Plugin",
       "type": "text",
-      "content": "Open this note to use the plugin."
-    },
-    {
-      "title": "My Plugin Code",
-      "type": "code",
-      "mime": "application/javascript;env=frontend",
-      "sourceUrl": "code.js"
+      "content": "Open this note to use the plugin.",
+      "children": [
+        {
+          "title": "My Plugin Code",
+          "type": "code",
+          "mime": "application/javascript;env=frontend",
+          "sourceUrl": "code.js"
+        },
+        {
+          "title": "My Plugin Config",
+          "type": "text",
+          "content": "Configure the plugin here."
+        }
+      ]
     }
   ],
   "relations": [
     { "type": "renderNote", "from": "My Plugin", "to": "My Plugin Code" }
   ],
   "labels": [
-    { "note": "My Plugin Code", "name": "readOnly", "value": "" }
+    { "note": "My Plugin Code", "name": "readOnly", "value": "" },
+    { "note": "My Plugin Config", "name": "myPluginConfig", "value": "" }
   ]
 }
 ```
 
-Each note with `sourceUrl` fetches the source file (relative to the manifest URL). Labels and relations from the manifest are applied automatically.
+Each note can have a recursive **`children`** array: the parent note (e.g. the render note) is created first and the children (code, config, related notes) are created **inside it**, building a real tree in Trilium instead of flat notes. Notes with `sourceUrl` fetch the source file (relative to the manifest URL). Labels and relations from the manifest are applied automatically (labels/relations reference notes by title).
 
 ```
-manifestUrl → download manifest → for each note: create + apply labels → create relations → done
+manifestUrl → download manifest → for each note: create + create its children → apply labels → create relations → done
 ```
 
 ### ZIP (`zipUrl`, legacy)
@@ -173,7 +183,8 @@ Downloads the ZIP to the user's browser for manual import via **Options → Impo
 1. Backend downloads the source file via HTTPS
 2. Creates a `code` note with MIME `application/javascript;env=frontend`
 3. Sets `#pluginId`, `#pluginVersion`, `#pluginName` labels
-4. ✅ Done
+4. Applies `labels` from the registry entry (e.g. `widget`, `readOnly`)
+5. ✅ Done
 
 ### `zipUrl` install (legacy)
 1. Downloads the ZIP to the user's browser

@@ -185,6 +185,7 @@ Users add your registry URL as `#registryUrl` on their `plugin-registry` note.
       "description": "Short description shown on the card.",
       "tags": ["tag1", "tag2"],
       "sourceUrl": "https://raw.githubusercontent.com/.../plugin.jsx",
+      "labels": [ { "name": "widget" }, { "name": "readOnly" } ],
       "zipUrl": "https://github.com/.../archive.zip"
     }
   ]
@@ -201,6 +202,7 @@ Users add your registry URL as `#registryUrl` on their `plugin-registry` note.
 | `tags` | | Array of tag strings shown as pills. |
 | `homepage` | | URL to docs or repository — shows a "How to" button on the card |
 | `sourceUrl` | | Raw URL to the `.js`/`.jsx` source. |
+| `labels` | | Array of `{ "name", "value" }` applied to the created note in the single-file flow — e.g. `widget`, `readOnly`. |
 | `manifestUrl` | | Raw URL to a `manifest.json` for multi-note plugins. |
 | `zipUrl` | | Legacy fallback. URL to a Trilium export ZIP. |
 
@@ -229,19 +231,26 @@ my-plugin/
     {
       "title": "My Plugin",
       "type": "text",
-      "content": "Open this note to use My Plugin."
-    },
-    {
-      "title": "My Plugin Widget",
-      "type": "code",
-      "mime": "application/javascript;env=frontend",
-      "sourceUrl": "widget.js"
-    },
-    {
-      "title": "My Plugin Handler",
-      "type": "code",
-      "mime": "application/javascript;env=backend",
-      "sourceUrl": "handler.js"
+      "content": "Open this note to use My Plugin.",
+      "children": [
+        {
+          "title": "My Plugin Widget",
+          "type": "code",
+          "mime": "application/javascript;env=frontend",
+          "sourceUrl": "widget.js"
+        },
+        {
+          "title": "My Plugin Handler",
+          "type": "code",
+          "mime": "application/javascript;env=backend",
+          "sourceUrl": "handler.js"
+        },
+        {
+          "title": "My Plugin Config",
+          "type": "text",
+          "content": "Configure the plugin here."
+        }
+      ]
     }
   ],
   "relations": [
@@ -264,6 +273,7 @@ my-plugin/
 | `mime` | | MIME type (required if `type: "code"`) |
 | `content` | | Static text content |
 | `sourceUrl` | | URL to download source (relative to the manifest) |
+| `children` | | Recursive array of note definitions — the note is created as a **parent** and the children are created inside it (real tree, e.g. render note → code/config notes) |
 
 ### Hosting
 

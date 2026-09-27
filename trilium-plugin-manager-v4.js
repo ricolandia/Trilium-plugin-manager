@@ -752,7 +752,7 @@ async function installPlugin(p, btn) {
       // ── Fluxo sourceUrl: baixa o .js/.jsx e cria nota code diretamente ──
       btn.html('<span class="spinner"></span>Baixando...');
       const result = await api.runAsyncOnBackendWithManualTransactionHandling(
-        async (sourceUrl, parentNoteId, pluginId, pluginVersion, pluginName) => {
+        async (sourceUrl, parentNoteId, pluginId, pluginVersion, pluginName, labels) => {
           function httpGet(url, depth) {
             // fetch é o caminho permitido no sandbox de scripts (0.105+ bloqueia require('https'))
             if ((depth || 0) > 5) return Promise.reject(new Error('Muitos redirects'));
@@ -784,9 +784,14 @@ async function installPlugin(p, btn) {
           await note.setAttribute('label', 'pluginId',      pluginId);
           await note.setAttribute('label', 'pluginVersion', pluginVersion);
           await note.setAttribute('label', 'pluginName',    pluginName);
+          if (Array.isArray(labels)) {
+            for (const l of labels) {
+              if (l && l.name) await note.setAttribute('label', l.name, l.value || '');
+            }
+          }
           return { noteId: note.noteId };
         },
-        [p.sourceUrl, CFG.installedNoteId, p.id, p.version, p.name]
+        [p.sourceUrl, CFG.installedNoteId, p.id, p.version, p.name, p.labels || null]
       );
 
       installedMap.set(p.id, p.version);

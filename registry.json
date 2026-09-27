@@ -35,7 +35,8 @@
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Canvas-Note-Tools",
       "tags": ["canvas", "excalidraw", "relations", "flowchart", "templates", "visual"],
-      "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Canvas-Note-Tools/Canvas-note-tools/Canvas%20tools%20v8.js"
+      "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Canvas-Note-Tools/Canvas-note-tools/Canvas%20tools%20v8.js",
+      "labels": [{"name":"widget"},{"name":"readOnly"}]
     },
       {
       "id": "canvas-templates-for-production",
@@ -88,17 +89,19 @@
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Minimalist-Pomodoro",
       "tags": ["pomodoro", "timer"],
-      "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Minimalist-Pomodoro/Pomodoro-mini/Pomodoro%20mini.js"
+      "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Minimalist-Pomodoro/Pomodoro-mini/Pomodoro%20mini.js",
+      "labels": [{"name":"widget"},{"name":"readOnly"}]
     },
       {
       "id": "attribute-garbage-collector",
       "name": "Attribute Garbage Collector",
       "description": "Scans all notes in your TriliumNext database for broken relations, unused labels, rare attributes, and near-duplicate names. Preview and batch-delete them — deletions persist.",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Attribute-Garbage-Collector",
       "tags": ["notes", "cleaner", "attribute"],
       "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Attribute-Garbage-Collector/attribute-gc.js",
+      "labels": [{"name":"widget"},{"name":"readOnly"}],
       "manifestUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Attribute-Garbage-Collector/manifest.json"
     },
     {
@@ -139,7 +142,8 @@
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Word-Counter",
       "tags": ["word", "counter"],
-      "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Word-Counter/Word%20count.js"
+      "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Word-Counter/Word%20count.js",
+      "labels": [{"name":"widget"},{"name":"readOnly"}]
     },
     {
       "id": "daily-note-navigator",
@@ -149,7 +153,8 @@
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Daily-Note-Navigator",
       "tags": ["widget", "productivity"],
-      "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Daily-Note-Navigator/Daily-Note-Navigator.js"
+      "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Daily-Note-Navigator/Daily-Note-Navigator.js",
+      "labels": [{"name":"widget"},{"name":"readOnly"}]
     },
     {
       "id": "daily-note-map",

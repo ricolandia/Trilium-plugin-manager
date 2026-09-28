@@ -21,7 +21,7 @@
       "id": "weekly-planner-editor",
       "name": "Weekly Planner (Editor)",
       "description": "Weekly planning board with backlog and day columns, plus Month and Gantt views, recurrence, drag-and-drop and a mobile layout. Original version by ricolandia.",
-      "version": "0.8.4",
+      "version": "0.8.5",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Weekly-Planner",
       "tags": ["productivity", "planning", "kanban"],

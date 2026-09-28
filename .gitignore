@@ -12,3 +12,6 @@ CONTEXTO.md
 .opencode/skills/
 .opencodeignore
 *.sync-conflict-*
+
+# Session notes (local)
+SESSION.md

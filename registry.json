@@ -157,16 +157,6 @@
       "labels": [{"name":"widget"},{"name":"readOnly"}]
     },
     {
-      "id": "daily-note-map",
-      "name": "Daily Note Map",
-      "description": "Visual map of notes edited today, with the journal at the center.",
-      "version": "0.8.1",
-      "author": "ricolandia",
-      "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Daily-Note-Map",
-      "tags": ["productivity", "visual"],
-      "manifestUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Daily-Note-Map/manifest.json"
-    },
-    {
       "id": "mastodon-sender",
       "name": "Mastodon Sender",
       "description": "Compose and post toots directly from TriliumNext with visibility control, content warnings, and current note support.",

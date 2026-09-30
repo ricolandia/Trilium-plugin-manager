@@ -1,6 +1,8 @@
-# 🧩 TriliumNext Plugin Manager
+# 🧩 TriliumNext Script Manager (Scripts, Widgets & Render Notes)
 
-A self-contained plugin manager that lives **inside** TriliumNext. Install, update, and remove plugins with a single click — no external tools, no CLI, no wrappers.
+A self-contained script manager that lives **inside** TriliumNext. Install, update, and remove scripts, widgets, and render notes with a single click — no external tools, no CLI, no wrappers.
+
+> **Terminology note:** TriliumNext uses the official Trilium terms *scripts*, *custom widgets*, *launch bar widgets*, *render notes*, *backend scripts* and *themes* — there is no official "plugin" concept. This tool was previously called "Plugin Manager"; the docs now use the official terms.
 
 ```
 Render Note → Fetch registry → Show cards → Install / Update / Uninstall
@@ -10,7 +12,7 @@ Render Note → Fetch registry → Show cards → Install / Update / Uninstall
 
 ## How it works
 
-The Plugin Manager is a **JS Frontend Render Note**. On load, it fetches a plugin registry (a JSON file hosted anywhere public), renders a card-based UI, and lets you install, update, or remove plugins.
+The Script Manager is a **JS Frontend Render Note**. On load, it fetches a registry (a JSON file hosted anywhere public), renders a card-based UI, and lets you install, update, or remove scripts/widgets.
 
 **Two installation methods:**
 
@@ -19,18 +21,18 @@ The Plugin Manager is a **JS Frontend Render Note**. On load, it fetches a plugi
 | **`sourceUrl`** (recommended) | Downloads the `.js`/`.jsx` source directly and creates a code note | ❌ No |
 | **`zipUrl`** (fallback) | Downloads a ZIP for manual import via Options → Import | ✅ Yes |
 
-For the `sourceUrl` method, no ETAPI token is required — the plugin is created as a code note in one atomic backend call. No HTTP, no ZIP, no deadlock.
+For the `sourceUrl` method, no ETAPI token is required — the script is created as a code note in one atomic backend call. No HTTP, no ZIP, no deadlock.
 
 ---
 
 ## Features
 
-- **Install** plugins from a remote or local registry with one click
+- **Install** scripts/widgets from a remote or local registry with one click
 - **Update detection** — cards turn yellow when a newer version is available
-- **Uninstall** — removes the plugin note cleanly
+- **Uninstall** — removes the script note cleanly
 - **Remote registry** with automatic fallback to local note content
 - **Source indicator** — shows remote/local source and last fetch time
-- **Dual mode** — `sourceUrl` (zero-config) or `zipUrl` (legacy) per plugin entry
+- **Dual mode** — `sourceUrl` (zero-config) or `zipUrl` (legacy) per entry
 - Inherits the active TriliumNext theme via CSS variables
 
 ---
@@ -42,7 +44,7 @@ For the `sourceUrl` method, no ETAPI token is required — the plugin is created
 ```
 Plugin Manager         ← Code note, MIME: application/javascript;env=frontend  (paste the JS code)
 ├── plugin-registry    ← Code note, MIME: application/json  (registry JSON + config labels)
-└── Installed          ← Text note  (receives installed plugins as child notes)
+└── Installed          ← Text note  (receives installed scripts as child notes)
 ```
 
 ### 2. Add labels
@@ -60,7 +62,7 @@ On **Installed**:
 |-------|-------|:--------:|
 | `#installedPlugins` | *(no value — marks the note)* | ✅ |
 
-> ℹ️ `#etapiToken` and `#triliumPort` are **no longer required** when your registry uses `sourceUrl` entries (recommended). They are only needed if you plan to install legacy `zipUrl`-based plugins.
+> ℹ️ `#etapiToken` and `#triliumPort` are **no longer required** when your registry uses `sourceUrl` entries (recommended). They are only needed if you plan to install legacy `zipUrl`-based scripts.
 
 ### 3. Paste the code
 
@@ -103,21 +105,21 @@ Create a public [GitHub Gist](https://gist.github.com) with a `registry.json` fi
 | `author` | | Author name |
 | `description` | | Short card description |
 | `tags` | | Array of tag strings |
-| `homepage` | | URL to the plugin's docs or repository — shows a "How to" button on the card |
+| `homepage` | | URL to the script's docs or repository — shows a "How to" button on the card |
 | `sourceUrl` | | Raw URL to the `.js`/`.jsx` source file |
 | `labels` | | Array of `{ "name", "value" }` applied to the created note in the single-file flow — e.g. `widget`, `readOnly` |
-| `manifestUrl` | | Raw URL to a `manifest.json` for multi-note plugins (see below) |
+| `manifestUrl` | | Raw URL to a `manifest.json` for multi-note scripts (see below) |
 | `zipUrl` | | Legacy URL to a Trilium export ZIP |
 
 At least one of `sourceUrl`, `manifestUrl` or `zipUrl` must be provided.
 
 ---
 
-## Plugin formats
+## Script formats
 
 ### Single-file (`sourceUrl`)
 
-A single `.js` or `.jsx` file. The Plugin Manager downloads it and creates one code note.
+A single `.js` or `.jsx` file. The Script Manager downloads it and creates one code note.
 
 ```
 sourceUrl → download → create code note → done
@@ -125,7 +127,7 @@ sourceUrl → download → create code note → done
 
 ### Multi-note (`manifestUrl`)
 
-For plugins that need multiple notes (widget + handler + config + render note). The `manifestUrl` points to a JSON file describing the notes to create:
+For scripts that need multiple notes (widget + handler + config + render note). The `manifestUrl` points to a JSON file describing the notes to create:
 
 ```json
 {
@@ -133,7 +135,7 @@ For plugins that need multiple notes (widget + handler + config + render note). 
     {
       "title": "My Plugin",
       "type": "text",
-      "content": "Open this note to use the plugin.",
+      "content": "Open this note to use the script.",
       "children": [
         {
           "title": "My Plugin Code",
@@ -144,7 +146,7 @@ For plugins that need multiple notes (widget + handler + config + render note). 
         {
           "title": "My Plugin Config",
           "type": "text",
-          "content": "Configure the plugin here."
+          "content": "Configure the script here."
         }
       ]
     }
@@ -204,17 +206,17 @@ On every load, the manager compares the `version` field in the registry against 
 |------|-------------|
 | `trilium-plugin-manager-v4.js` | **Main file** — paste into a JS Frontend note |
 | `trilium-plugin-manager-v4.html` | Legacy HTML version (kept for reference) |
-| `registry.json` | Example registry with official plugins |
-| `PLUGIN_DEV_GUIDE.md` | Guide for creating and publishing plugins |
+| `registry.json` | Example registry with official scripts |
+| `PLUGIN_DEV_GUIDE.md` | Guide for creating and publishing scripts |
 | `MANIFEST_GENERATOR.md` | Fill-in-the-blank prompt to generate manifest.json |
 
 ---
 
 ## Roadmap
 
-- [ ] Plugin changelog field
+- [ ] Script changelog field
 - [ ] Startup update badge
-- [ ] One-click "Export as plugin" helper note
+- [ ] One-click "Export as script" helper note
 
 ---
 

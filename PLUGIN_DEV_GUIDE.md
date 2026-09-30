@@ -1,10 +1,12 @@
-# 📦 Plugin Developer Guide
+# 📦 Script Developer Guide
 
-How to create plugins compatible with the TriliumNext Plugin Manager.
+How to create scripts and widgets compatible with the TriliumNext Script Manager.
+
+> **Terminology note:** TriliumNext uses the official Trilium terms *scripts*, *custom widgets*, *launch bar widgets*, *render notes*, *backend scripts* and *themes* — there is no official "plugin" concept. This guide was previously called "Plugin Developer Guide".
 
 ---
 
-## Two plugin formats
+## Two script formats
 
 | Format | File type | MIME | Best for |
 |--------|-----------|------|----------|
@@ -15,7 +17,7 @@ Both formats are single-file, self-contained, and hosted at a public URL. No ZIP
 
 ---
 
-## Format A: JS Frontend plugin
+## Format A: JS Frontend script
 
 A plain JavaScript file that runs in TriliumNext's frontend context. It has access to `api` (the FrontendScriptApi) and `$container` (a jQuery element).
 
@@ -67,7 +69,7 @@ init();
 
 ---
 
-## Format B: JSX Preact plugin
+## Format B: JSX Preact script
 
 A Preact component written in JSX. TriliumNext renders it as a React/Preact component inside the note.
 
@@ -127,11 +129,11 @@ export default MyPlugin;
 
 - Full-page UI components (planner boards, dashboards)
 - Complex interactive tools
-- Any plugin that benefits from React/Preact state management
+- Any script that benefits from React/Preact state management
 
 ---
 
-## Publishing your plugin
+## Publishing your script
 
 ### 1. Host the source file
 
@@ -143,7 +145,7 @@ https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/path/to/plugin.jsx
 
 > **Important:** Use the **Raw** URL — the Plugin Manager downloads the raw source code, not a web page.
 
-### 2. Add your plugin to a registry
+### 2. Add your script to a registry
 
 Create or update a `registry.json` with your plugin entry:
 
@@ -153,7 +155,7 @@ Create or update a `registry.json` with your plugin entry:
   "name": "My Plugin",
   "version": "1.0.0",
   "author": "Your Name",
-  "description": "What your plugin does.",
+  "description": "What your script does.",
   "tags": ["tool", "productivity"],
   "sourceUrl": "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/plugin.jsx"
 }
@@ -195,7 +197,7 @@ Users add your registry URL as `#registryUrl` on their `plugin-registry` note.
 | Field | Required | Description |
 |-------|:--------:|-------------|
 | `id` | ✅ | Unique identifier. Used to track installed version. |
-| `name` | ✅ | Display name shown on the plugin card. |
+| `name` | ✅ | Display name shown on the script card. |
 | `version` | ✅ | Semver string. Compared against installed `#pluginVersion`. |
 | `author` | | Shown on the card. |
 | `description` | | Short text shown below the name. |
@@ -210,9 +212,9 @@ At least one of `sourceUrl`, `manifestUrl` or `zipUrl` is required.
 
 ---
 
-## Multi-note plugins with `manifestUrl`
+## Multi-note scripts with `manifestUrl`
 
-For plugins that need more than one note (e.g., a render note + widget + config), use a `manifest.json` file.
+For scripts that need more than one note (e.g., a render note + widget + config), use a `manifest.json` file.
 
 ### File structure
 
@@ -287,7 +289,7 @@ Upload the manifest and all source files to a public folder. The `manifestUrl` i
 
 ## Manifest Generator
 
-Use o **[Manifest Generator](./MANIFEST_GENERATOR.md)** para criar o `manifest.json` do seu plugin preenchendo um formulario simples. O prompt pode ser colado em um chat de IA (Claude, ChatGPT) ou usado como checklist manual.
+Use o **[Manifest Generator](./MANIFEST_GENERATOR.md)** para criar o `manifest.json` do seu script preenchendo um formulario simples. O prompt pode ser colado em um chat de IA (Claude, ChatGPT) ou usado como checklist manual.
 
 ---
 
@@ -309,11 +311,11 @@ Use o **[Manifest Generator](./MANIFEST_GENERATOR.md)** para criar o `manifest.j
 
 ZIP exports require importing via ETAPI, which needs an API token and causes a SQLite deadlock when called from inside a backend callback. The `sourceUrl` approach avoids all of this by creating a code note directly.
 
-### Can my plugin use the ETAPI?
+### Can my script use the ETAPI?
 
 ETAPI is available from the **frontend** (browser context) since it runs on the same origin. From the backend, use `api` methods instead.
 
-### How do I add settings to my plugin?
+### How do I add settings to my script?
 
 Create a config note using `api.createNewNote()` in your init code. Use labels like `#pluginConfig` to mark it. The user can edit it like any other note.
 
@@ -327,4 +329,4 @@ For JS plugins, use `$container` to build your UI directly.
 
 Yes. Use the `manifestUrl` format — create a `manifest.json` that lists each note with its own `sourceUrl`. The Plugin Manager creates all notes and applies labels and relations automatically.
 
-If you need dynamic notes (created at runtime), use `api.createNewNote()` in your plugin's init code.
+If you need dynamic notes (created at runtime), use `api.createNewNote()` in your script's init code.

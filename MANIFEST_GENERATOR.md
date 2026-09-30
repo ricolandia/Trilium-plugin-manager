@@ -1,24 +1,24 @@
-# 📝 Manifest Generator for TriliumNext Plugins
+# 📝 Manifest Generator for TriliumNext Scripts
 
-Fill out the sections below and paste into an AI chat (Claude, ChatGPT, etc.) or use as a manual checklist to generate your plugin's `manifest.json`.
+Fill out the sections below and paste into an AI chat (Claude, ChatGPT, etc.) or use as a manual checklist to generate your script's `manifest.json`.
 
 ---
 
 ## How to use
 
-1. Fill every `[FILL]` section with your plugin's data
+1. Fill every `[FILL]` section with your script's data
 2. Paste the complete prompt into an AI chat
 3. The AI will return a ready-to-use `manifest.json`
-4. Save it in your plugin's folder inside the Toolkit
+4. Save it in your script's folder inside the Toolkit
 
 ---
 
 ## Prompt
 
 ```
-Create a manifest.json file for a TriliumNext plugin with the following characteristics:
+Create a manifest.json file for a TriliumNext script with the following characteristics:
 
-## Plugin Data (registry)
+## Script Data (registry)
 - ID: [FILL — e.g. my-plugin]
 - Name: [FILL — e.g. My Plugin]
 - Version: [FILL — e.g. 0.1.0]
@@ -31,12 +31,12 @@ Create a manifest.json file for a TriliumNext plugin with the following characte
 [Paste the base URL where .js/.jsx files will be hosted]
 Example: https://raw.githubusercontent.com/youruser/yourrepo/main/My-Plugin/
 
-## Plugin Notes (fill one table per note)
+## Script Notes (fill one table per note)
 
 ### Note 1 — Render Note (main)
 - Title: [FILL — e.g. My Plugin]
 - Type: text
-- Content: [FILL — e.g. "Open this note to use the plugin."]
+- Content: [FILL — e.g. "Open this note to use the script."]
 - Labels: [FILL — leave empty if none]
 - Relation ~renderNote points to which note?: [FILL — e.g. My Plugin Code]
 
@@ -61,13 +61,13 @@ Example: https://raw.githubusercontent.com/youruser/yourrepo/main/My-Plugin/
 - Content: [FILL — e.g. "{}" for JSON, or instructions text]
 - Labels: [FILL — e.g. myPluginConfig]
 
-[Repeat for as many notes as your plugin needs]
+[Repeat for as many notes as your script needs]
 
 ## Important rules
 1. sourceUrl inside the manifest must be an ABSOLUTE URL (https://raw.githubusercontent.com/...) or RELATIVE to the manifest
 2. If the filename has spaces, use %20 (e.g. AI%20Code.js)
 3. Labels with empty value should be an empty string ""
-4. Relations are optional — include only if your plugin uses ~renderNote
+4. Relations are optional — include only if your script uses ~renderNote
 5. The first note in the manifest automatically gets pluginId, pluginVersion, pluginName labels
 
 Output only the JSON manifest, no explanations.
@@ -80,9 +80,9 @@ Output only the JSON manifest, no explanations.
 Use this as reference:
 
 ```
-Create a manifest.json file for a TriliumNext plugin with the following characteristics:
+Create a manifest.json file for a TriliumNext script with the following characteristics:
 
-## Plugin Data (registry)
+## Script Data (registry)
 - ID: shared-notes
 - Name: Shared Notes
 - Version: 0.6.0
@@ -94,7 +94,7 @@ Create a manifest.json file for a TriliumNext plugin with the following characte
 ## Base URL for source files
 https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Shared-Notes/
 
-## Plugin Notes
+## Script Notes
 
 ### Note 1 — Render Note
 - Title: Shared Notes

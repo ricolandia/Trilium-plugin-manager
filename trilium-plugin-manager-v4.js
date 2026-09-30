@@ -351,8 +351,8 @@ $root.html(`
 
 <div class="header">
   <div class="header-left">
-    <h1>🧩 Plugin Manager</h1>
-    <p>Gerencie plugins do TriliumNext</p>
+    <h1>🧩 Gerenciador de Scripts & Widgets</h1>
+    <p>Gerencie scripts, widgets e render notes do TriliumNext</p>
   </div>
   <button class="btn-refresh">↻ Atualizar</button>
 </div>
@@ -482,7 +482,7 @@ async function init() {
 
     // Valida token (opcional — só necessário para registry com zipUrl)
     if (!CFG.etapiToken) {
-      setBanner('Token ETAPI não configurado. Instalação via sourceUrl funciona sem ele, mas plugins zipUrl exigem token em Options > ETAPI.', 'warn');
+      setBanner('Token ETAPI não configurado. Instalação via sourceUrl funciona sem ele, mas scripts/widgets zipUrl exigem token em Options > ETAPI.', 'warn');
     }
 
     // Parse plugins para contar updates antes do banner
@@ -496,7 +496,7 @@ async function init() {
 
     const updateNote = updateCount > 0 ? ` · 🔔 ${updateCount} update(s) disponível(is)` : '';
     setBanner(
-      `Conectado · porta ${CFG.port} · ${installedMap.size} plugin(s) instalado(s)${updateNote}`,
+      `Conectado · porta ${CFG.port} · ${installedMap.size} script(s)/widget(s) instalado(s)${updateNote}`,
       updateCount > 0 ? 'warn' : 'ok'
     );
 
@@ -582,8 +582,8 @@ function renderPlugins(plugins) {
   if (!filtered.length) {
     setContent(`<div class="state-center">
       <div class="icon">📭</div>
-      <p>Nenhum plugin nesta categoria.<br>
-      ${activeCategory !== 'all' ? 'Tente outra categoria.' : 'Edite a nota <code>#pluginRegistry</code> para adicionar plugins.'}</p>
+      <p>Nenhum script/widget nesta categoria.<br>
+      ${activeCategory !== 'all' ? 'Tente outra categoria.' : 'Edite a nota <code>#pluginRegistry</code> para adicionar scripts/widgets.'}</p>
     </div>`);
     return;
   }
@@ -812,7 +812,7 @@ async function installPlugin(p, btn) {
       // ── Fluxo zipUrl: download do ZIP para o usuário instalar manualmente ──
       const a = document.createElement('a');
       a.href = p.zipUrl;
-      a.download = (p.name || 'plugin') + '.zip';
+      a.download = (p.name || 'script') + '.zip';
       a.target = '_blank';
       a.rel = 'noopener';
       a.click();
@@ -821,7 +821,7 @@ async function installPlugin(p, btn) {
       return;
 
     } else {
-      throw new Error('Plugin sem manifestUrl, sourceUrl ou zipUrl');
+      throw new Error('Script/Widget sem manifestUrl, sourceUrl ou zipUrl');
     }
 
     // Atualiza o card para estado "instalado"
@@ -855,7 +855,7 @@ async function uninstallPlugin(p, btn) {
         const installedNote   = await api.getNote(installedNoteId);
         const children = await installedNote.getChildNotes();
         const target   = children.find(n => n.getAttribute('label', 'pluginId')?.value === pluginId);
-        if (!target) throw new Error(`Nota do plugin "${pluginId}" não encontrada em Installed.`);
+        if (!target) throw new Error(`Nota do script/widget "${pluginId}" não encontrada em Installed.`);
         await target.delete();
       } catch (err) {
         console.error('[PluginManager] backend uninstall err:', err);

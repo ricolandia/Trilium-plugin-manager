@@ -146,7 +146,7 @@
       "id": "attribute-garbage-collector",
       "name": "Attribute Garbage Collector",
       "description": "Scans all notes in your TriliumNext database for broken relations, unused labels, rare attributes, and near-duplicate names. Preview and batch-delete them — deletions persist.",
-      "version": "0.8.2",
+      "version": "0.8.3",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Attribute-Garbage-Collector",
       "tags": [

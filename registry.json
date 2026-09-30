@@ -14,9 +14,13 @@
       "version": "0.1.9",
       "author": "ecodiv",
       "homepage": "https://github.com/ecodiv/Trilium_scripts",
-      "tags": ["productivity", "planning", "kanban"],
+      "tags": [
+        "productivity",
+        "planning",
+        "kanban"
+      ],
       "sourceUrl": "https://raw.githubusercontent.com/ecodiv/Trilium_scripts/main/weeklyplanner/planner.jsx"
-      },
+    },
     {
       "id": "weekly-planner-editor",
       "name": "Weekly Planner (Editor)",
@@ -24,7 +28,11 @@
       "version": "0.9.0",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Weekly-Planner",
-      "tags": ["productivity", "planning", "kanban"],
+      "tags": [
+        "productivity",
+        "planning",
+        "kanban"
+      ],
       "manifestUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Weekly-Planner/manifest.json"
     },
     {
@@ -34,18 +42,36 @@
       "version": "0.9.0",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Canvas-Note-Tools",
-      "tags": ["canvas", "excalidraw", "relations", "flowchart", "templates", "visual"],
+      "tags": [
+        "canvas",
+        "excalidraw",
+        "relations",
+        "flowchart",
+        "templates",
+        "visual"
+      ],
       "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Canvas-Note-Tools/Canvas-note-tools/Canvas%20tools%20v8.js",
-      "labels": [{"name":"widget"},{"name":"readOnly"}]
+      "labels": [
+        {
+          "name": "widget"
+        },
+        {
+          "name": "readOnly"
+        }
+      ]
     },
-      {
+    {
       "id": "canvas-templates-for-production",
       "name": "Canvas Templates For Production",
       "description": "A collection of Excalidraw templates for productivity, learning, and creativity. Ideal for use with Canvas Note Tools (Insert template).",
       "version": "0.8.0",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit",
-      "tags": ["excalidraw", "templates", "canvas"],
+      "tags": [
+        "excalidraw",
+        "templates",
+        "canvas"
+      ],
       "zipUrl": "https://github.com/ricolandia/TriliumNext-Toolkit/raw/refs/heads/main/Canvas-Templates/Canvas-templates.zip"
     },
     {
@@ -55,8 +81,13 @@
       "version": "0.9.0",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Writers-Tools",
-      "tags": ["writing", "screenplay", "comics", "render"],
-     "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Writers-Tools/js-Fountain/js%20-%20Fountain%203.js",
+      "tags": [
+        "writing",
+        "screenplay",
+        "comics",
+        "render"
+      ],
+      "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Writers-Tools/js-Fountain/js%20-%20Fountain%203.js",
       "manifestUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Writers-Tools/js-Fountain/manifest.json"
     },
     {
@@ -66,7 +97,11 @@
       "version": "0.9.0",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Writers-Tools",
-      "tags": ["writing", "export", "longform"],
+      "tags": [
+        "writing",
+        "export",
+        "longform"
+      ],
       "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Writers-Tools/js-grid/js%20-%20grade.js",
       "manifestUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Writers-Tools/js-grid/manifest.json"
     },
@@ -77,7 +112,12 @@
       "version": "0.9.0",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/AI-Chat",
-      "tags": ["ai", "chat", "openrouter", "productivity"],
+      "tags": [
+        "ai",
+        "chat",
+        "openrouter",
+        "productivity"
+      ],
       "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/AI-Chat/AI-Chat/AI%20Code.js",
       "manifestUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/AI-Chat/manifest.json"
     },
@@ -88,20 +128,41 @@
       "version": "0.9.0",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Minimalist-Pomodoro",
-      "tags": ["pomodoro", "timer"],
+      "tags": [
+        "pomodoro",
+        "timer"
+      ],
       "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Minimalist-Pomodoro/Pomodoro-mini/Pomodoro%20mini.js",
-      "labels": [{"name":"widget"},{"name":"readOnly"}]
+      "labels": [
+        {
+          "name": "widget"
+        },
+        {
+          "name": "readOnly"
+        }
+      ]
     },
-      {
+    {
       "id": "attribute-garbage-collector",
       "name": "Attribute Garbage Collector",
       "description": "Scans all notes in your TriliumNext database for broken relations, unused labels, rare attributes, and near-duplicate names. Preview and batch-delete them — deletions persist.",
       "version": "0.8.2",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Attribute-Garbage-Collector",
-      "tags": ["notes", "cleaner", "attribute"],
+      "tags": [
+        "notes",
+        "cleaner",
+        "attribute"
+      ],
       "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Attribute-Garbage-Collector/attribute-gc.js",
-      "labels": [{"name":"widget"},{"name":"readOnly"}],
+      "labels": [
+        {
+          "name": "widget"
+        },
+        {
+          "name": "readOnly"
+        }
+      ],
       "manifestUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Attribute-Garbage-Collector/manifest.json"
     },
     {
@@ -111,17 +172,23 @@
       "version": "0.11.0",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Shared-Notes",
-      "tags": ["share", "comment"],
+      "tags": [
+        "share",
+        "comment"
+      ],
       "manifestUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Shared-Notes/manifest.json"
     },
     {
       "id": "knowledge-debt",
       "name": "Knowledge Dashboard",
-      "description": "Full-page dashboard that audits your knowledge base for orphan notes, stubs, empty notes, old TODOs and abandoned notes.",
-      "version": "0.8.0",
+      "description": "Full-page dashboard that audits your knowledge base for orphan notes, stubs, empty notes, old TODOs, abandoned notes, PDFs — plus a Dataview-like custom SQL query builder.",
+      "version": "0.8.1",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Knowledge-Debt-Dashboard",
-      "tags": ["notes", "knowledge"],
+      "tags": [
+        "notes",
+        "knowledge"
+      ],
       "manifestUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Knowledge-Debt-Dashboard/manifest.json"
     },
     {
@@ -131,7 +198,10 @@
       "version": "0.8.0",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Kanboard-Integration",
-      "tags": ["productivity", "kanban"],
+      "tags": [
+        "productivity",
+        "kanban"
+      ],
       "manifestUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Kanboard-Integration/manifest.json"
     },
     {
@@ -141,9 +211,19 @@
       "version": "0.9.0",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Word-Counter",
-      "tags": ["word", "counter"],
+      "tags": [
+        "word",
+        "counter"
+      ],
       "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Word-Counter/Word%20count.js",
-      "labels": [{"name":"widget"},{"name":"readOnly"}]
+      "labels": [
+        {
+          "name": "widget"
+        },
+        {
+          "name": "readOnly"
+        }
+      ]
     },
     {
       "id": "daily-note-navigator",
@@ -152,9 +232,19 @@
       "version": "0.9.0",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Daily-Note-Navigator",
-      "tags": ["widget", "productivity"],
+      "tags": [
+        "widget",
+        "productivity"
+      ],
       "sourceUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Daily-Note-Navigator/Daily-Note-Navigator.js",
-      "labels": [{"name":"widget"},{"name":"readOnly"}]
+      "labels": [
+        {
+          "name": "widget"
+        },
+        {
+          "name": "readOnly"
+        }
+      ]
     },
     {
       "id": "mastodon-sender",
@@ -163,9 +253,13 @@
       "version": "0.8.0",
       "author": "ricolandia",
       "homepage": "https://github.com/ricolandia/TriliumNext-Toolkit/tree/main/Mastodon-Sender",
-      "tags": ["mastodon", "social", "fediverse", "productivity"],
+      "tags": [
+        "mastodon",
+        "social",
+        "fediverse",
+        "productivity"
+      ],
       "manifestUrl": "https://raw.githubusercontent.com/ricolandia/TriliumNext-Toolkit/main/Mastodon-Sender/manifest.json"
     }
   ]
 }
-
